@@ -1,28 +1,20 @@
-
 import React from "react"
+import AllRecipes from "../components/AllRecipes"
 import Layout from "../components/Layout"
-import styled from "styled-components"
+
 
 const Recipes = () => {
   return (
     <Layout>
-      <Wrapper>
-        <h1>Recipes Page</h1>
-      </Wrapper>
+      <main className="page">
+      <h4>Recipes Page</h4>
+        <AllRecipes />
+      </main>
+        
     </Layout>
   )
 }
 
-const Wrapper = styled.section`
-  color: red;
 
-  & h1 {
-    color: yellowgreen;
-  }
-
-  .text {
-    text-transform: uppercase;
-  }
-`
 
 export default Recipes
