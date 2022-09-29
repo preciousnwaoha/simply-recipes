@@ -1,12 +1,16 @@
 import React from 'react'
 import Layout from '../components/Layout'
+import { graphql } from "gatsby"
+import RecipesList from "../components/RecipesList"
 
-const Contact = () => {
+const Contact = ({data}) => {
+  const recipes = data.allContentfulRecipe.nodes
   return (
     <Layout>
       <main className="page">
-        <section className="contact-page">Want To Get In Touch?</section>
+        <section className="contact-page">
         <article className={"contact-info"}>
+          <h3>Want To Get In Touch?</h3>
         <p >
           Foor get these are the only outside yard stick bikjsbey mummy dam yes onlyfans gotcha nope noise necromanter forever in my heart is a tale of dishes
         </p>
@@ -20,7 +24,7 @@ const Contact = () => {
         </p>
         </article>
        <article>
-        <form className="form contact-form">
+        <form action="https://formspree.io/f/mbjbonve" method="POST" className="form contact-form">
           <div className='form-row'>
             <label htmlFor="name">your name</label>
             <input type="text" name="name" id="name" />
@@ -36,9 +40,33 @@ const Contact = () => {
           <button type="submit" className='btn block'>submit</button>
         </form>
        </article>
+       </section>
+       <section className="featured-recipes">
+          <h5>look at this Deliciousness!</h5>
+          <RecipesList recipes={recipes}/>
+        </section>
       </main>
     </Layout>
   )
 }
+
+export const query = graphql`
+  query {
+    allContentfulRecipe(
+      sort: {fields: title, order: ASC}
+      filter: {featured: {eq: true}}
+    ) {
+      nodes {
+        id
+        title
+        cookTime
+        prepTime
+        image {
+          gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
+        }
+      }
+    }
+  }
+`
 
 export default Contact

@@ -1,26 +1,42 @@
 import React from "react"
 import Layout from "../components/Layout"
-import styled from "styled-components"
+import { graphql, Link } from "gatsby"
+import setupTags from "../utils/setupTags"
+import slugify from "slugify"
 
-const Tags = () => {
+const Tags = ({
+  data: {
+    allContentfulRecipe: { nodes: recipes },
+  },
+}) => {
+  const newTags = setupTags(recipes)
   return (
     <Layout>
-      <Wrapper>
-        <h1>Tags Page</h1>
-      </Wrapper>
+     <main className="page">
+      <section className="tags-page">
+        {newTags.map((tag, index) => {
+          const [text, value] = tag
+          const slug = slugify(text, {lower: true})
+              return <Link to={`/tags/${slug}`} key={index} className="tag">
+                <h5>{text}</h5>
+                <p>{value} recipe</p>
+              </Link>
+          })}
+      </section>
+     </main>
     </Layout>
   )
 }
 
-const Wrapper = styled.section`
-  color: red;
-
-  & h1 {
-    color: yellowgreen;
-  }
-
-  .text {
-    text-transform: uppercase;
+export const query = graphql`
+  query {
+    allContentfulRecipe {
+      nodes {
+        content {
+          tags
+        }
+      }
+    }
   }
 `
 
