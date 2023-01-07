@@ -2,11 +2,13 @@ import React from 'react'
 import Layout from '../components/Layout'
 import { graphql } from "gatsby"
 import RecipesList from "../components/RecipesList"
+import SEO from '../components/SEO'
 
 const Contact = ({data}) => {
   const recipes = data.allContentfulRecipe.nodes
   return (
     <Layout>
+      <SEO title="Contact" description="Contact Us from here" />
       <main className="page">
         <section className="contact-page">
         <article className={"contact-info"}>
@@ -35,7 +37,9 @@ const Contact = ({data}) => {
           </div>
           <div className="form-row">
             <label htmlFor='message'>message</label>
-            <textareab name="message" id="message"></textareab>
+            <textarea name="message" id="message">
+
+            </textarea>
           </div>
           <button type="submit" className='btn block'>submit</button>
         </form>

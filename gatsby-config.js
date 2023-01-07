@@ -9,15 +9,17 @@ require("dotenv").config({
  */
 
 module.exports = {
-  /* Your site config here */ 
+  /* Your site config here */
   siteMetadata: {
     title: "Simply Recipes",
     description: "Nice and tasty recipes site",
     author: "@preciousnwaoha",
-    person: {name: "john", age:32},
-    simpleData: ['item 1', 'item 2'],
-    complexData: [{ name: "john", age: 32 }, {name: "susan", age: 21}],
-
+    person: { name: "john", age: 32 },
+    simpleData: ["item 1", "item 2"],
+    complexData: [
+      { name: "john", age: 32 },
+      { name: "susan", age: 21 },
+    ],
   },
   plugins: [
     `gatsby-plugin-styled-components`,
@@ -29,7 +31,7 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/assets/images`,
-      }
+      },
     },
     {
       resolve: `gatsby-source-contentful`,
@@ -40,22 +42,23 @@ module.exports = {
       },
     },
 
-      {
-        resolve: `gatsby-plugin-webfonts`,
-        options: {
-          fonts: {
-            google: [
-              {
-                family: "Montserrat",
-                variants: ["400"],
-              },
-              {
-                family: "Inconsolata",
-                variants: ["400", "500", "600", "700"],
-              },
-            ],
-          },
+    {
+      resolve: `gatsby-plugin-webfonts`,
+      options: {
+        fonts: {
+          google: [
+            {
+              family: "Montserrat",
+              variants: ["400"],
+            },
+            {
+              family: "Inconsolata",
+              variants: ["400", "500", "600", "700"],
+            },
+          ],
         },
       },
+    },
+    `gatsby-plugin-react-helmet`,
   ],
 }
