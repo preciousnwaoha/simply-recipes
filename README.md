@@ -8,14 +8,6 @@
   Simply recipes site in Gatsby
 </h1>
 
-# Simply Recipes
-
-Tags: App, Site, Tutorial Course
-
-# Simply Recipes
-
-### Recipes Web App in Gatsby
-
 ### Table of Content (Optional)
 
 - [Description](#description)
